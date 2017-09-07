@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!-- 加载db.propreties文件属性 -->
+	<properties resource="db.properties" ></properties>
+	
+	<!-- 类型别名 -->
+	<typeAliases>
+		<package name="com.itheima.pojo"/>
+	</typeAliases>
+
+	<!-- 运行环境配置 -->
+	<!-- default属性：指定使用哪一个运行环境 -->
+	<environments default="development">
+		<!-- 运行环境配置，id属性：唯一标识一个环境 -->
+		<environment id="development">
+			<!-- 事务管理器，JDBC：默认使用jdbc事务 -->
+			<transactionManager type="JDBC" />
+			<!-- 数据源配置， POOLED：mybatis框架提供的连接池-->
+			<dataSource type="POOLED">
+				<property name="driver" value="${db.driver}" />
+				<property name="url" value="${db.url}" />
+				<property name="username" value="${db.username}" />
+				<property name="password" value="${db.password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<!-- 映射文件位置 -->
+	<mappers>
+		<!-- <mapper resource="sqlmap/User.xml" /> -->
+		<package name="com.itheima.mapper"/>
+	</mappers>
+	
+</configuration>
